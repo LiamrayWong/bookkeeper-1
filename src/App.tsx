@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import styled from 'styled-components';
 import Nav from './components/Nav';
+
+
 const Wrapper = styled.div`
   height: 100vh;
   display: flex;
