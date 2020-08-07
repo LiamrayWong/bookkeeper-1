@@ -5,26 +5,11 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import styled from 'styled-components';
-import Nav from './components/Nav';
-
-
-const Wrapper = styled.div`
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
-const Main = styled.div`
-  flex-grow: 1;
-  overflow: auto;
-`;
-
+import Layout from './components/Layout';
 
 function App() {
   return (
     <Router>
-      <Wrapper>
-        <Main>
           <Switch>
             <Route path="/tags">
               <Tags/>
@@ -40,9 +25,6 @@ function App() {
               <NoMatch/>
             </Route>
           </Switch>
-        </Main>
-        <Nav/>
-      </Wrapper>
     </Router>
   );
 }
@@ -50,17 +32,27 @@ function App() {
 function NoMatch() {
   return <div>页面不存在，地址错误</div>;
 }
-
-function Statistics() {
-  return <h2>Statistics</h2>;
-}
-
 function Tags() {
-  return <h2>Tags</h2>;
+  return (
+    <Layout>
+      <h2>标签页</h2>
+    </Layout>
+  );
 }
 
 function Money() {
-  return <h2>Money</h2>;
+  return (
+    <Layout>
+      <h2>记账页</h2>
+    </Layout>
+  );
 }
 
+function Statistics() {
+  return (
+    <Layout>
+      <h2>统计页</h2>
+    </Layout>
+  );
+}
 export default App;
