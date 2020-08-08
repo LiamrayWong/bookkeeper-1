@@ -8,4 +8,4 @@ function Statistics() {
     </Layout>
   );
 }
-export default Statistics
+export {Statistics}
