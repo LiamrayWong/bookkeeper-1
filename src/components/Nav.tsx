@@ -19,8 +19,8 @@ const NavWrapper = styled.nav`
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          margin-top: 6px;
-          margin-bottom: 2px;
+          padding-top: 6px;
+          padding-bottom: 2px;
           .icon{
             width: 24px;
             height: 24px;
