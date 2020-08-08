@@ -7,6 +7,7 @@ import Icon from './Icon';
 const NavWrapper = styled.nav`
     line-height: 24px;
     box-shadow: 0 0 3px rgb(0,0,0,0.25);
+    background: white;
     > ul{
       display: flex;
       > li {
@@ -33,12 +34,10 @@ const NavWrapper = styled.nav`
             }
           }
         }
-       
-        
       }
-      
     }
 `;
+
 
 const Nav = () => {
   return (
