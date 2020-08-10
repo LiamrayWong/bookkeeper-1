@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, {useState} from 'react';
-import {log} from 'util';
+
 
 const Wrapper = styled.section`
   display: flex;
