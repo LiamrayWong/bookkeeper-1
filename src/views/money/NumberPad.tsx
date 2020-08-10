@@ -1,115 +1,26 @@
-import styled from 'styled-components';
 import React, {useState} from 'react';
-
-
-const Wrapper = styled.section`
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  > .output{
-    background: white;
-    font-size: 36px;
-    line-height: 72px;
-    text-align: right;
-    padding: 0 16px;
-    box-shadow: inset 0 -5px 5px -5px rgba(0,0,0,0.25),
-                inset 0 5px 5px -5px rgba(0,0,0,0.25);
-  }
-  > .pad{
-    > button{
-      float: left;
-      width: 25%;
-      height: 64px;
-      border: none;
-      &.ok{
-      height: 128px;
-        float: right;
-      }
-      &.zero{
-        width: 50%;
-      }
-      &:nth-child(1){
-        background: #F2F2F2;
-      }
-      &:nth-child(2),
-      &:nth-child(5){
-        background: #E0E0E0;
-      }
-      &:nth-child(3),
-      &:nth-child(6),
-      &:nth-child(9){
-        background: #D3D3D3;
-      }
-      &:nth-child(4),
-      &:nth-child(7),
-      &:nth-child(10){
-        background: #C1C1C1;
-      }
-      &:nth-child(8),
-      &:nth-child(11),
-      &:nth-child(13){
-        background: #B8B8B8;
-      }
-       &:nth-child(12){
-        background: #8B8B8B;
-      }
-      &:nth-child(14){
-        background: #A9A9A9;      
-      }
-    }
-  }
-`;
+import {Wrapper} from './NumberPad/Wrapper';
+import {generateOutput} from './NumberPad/generateOutput';
 
 const NumberPad = () => {
   const [output, _setOutput] = useState<string>('0');
-  const setOutput = (output:string) => {
-    if(output.length>16){
-      output = output.slice(0,16)
-    }else if(output === ''){
-      output = '0'
+  const setOutput = (output: string) => {
+    if (output.length > 16) {
+      output = output.slice(0, 16);
+    } else if (output === '') {
+      output = '0';
     }
-    _setOutput(output)
+    _setOutput(output);
   };
 
   const onClickButtonWrapper = (e: React.MouseEvent) => {
     const text = (e.target as HTMLButtonElement).textContent;
     if (text === null) {return;}
-    switch (text) {
-      case '0':
-      case '1':
-      case '2':
-      case '3':
-      case '4':
-      case '5':
-      case '6':
-      case '7':
-      case '8':
-      case '9':
-        if (output === '0') {
-          setOutput(text);
-        } else {
-          setOutput(output + text);
-        }
-        break;
-      case '.':
-        if (!output.includes('.')) {
-          setOutput(output + '.');
-        }
-        break;
-      case '删除':
-        if (output.length === 1) {
-          setOutput('');
-        } else {
-          setOutput(output.slice(0, -1));
-        }
-        break;
-      case '清空':
-        setOutput('');
-        break;
-      case '确认':
-        console.log('确认');
-        break;
+    if (text === '确认') {
+      //TO DO
+      return;
     }
+    setOutput(generateOutput(text,output))
   };
   return (
     <Wrapper>
