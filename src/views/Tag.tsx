@@ -16,22 +16,22 @@ const Topbar = styled.header`
   line-height: 20px;
   padding: 14px;
   background: white;
-`
+`;
 
 const InputWrapper = styled.section`
   background: white;
   padding: 0 16px;
   margin-top: 12px;
-`
+`;
 
 type Params = {
   id: string
 }
 
 const Tag: React.FC = () => {
-  const {findTag} = useTags();
-  let {id} = useParams<Params>();
-  const tag = findTag(parseInt(id));
+  const {findTag,updateTag} = useTags();
+  let {id:idString} = useParams<Params>();
+  const tag = findTag(parseInt(idString));
   return (
     <Layout>
       <Topbar>
@@ -40,7 +40,10 @@ const Tag: React.FC = () => {
         <Icon/>
       </Topbar>
       <InputWrapper>
-        <Input label="标签名"  type='text' placeholder='标签名' value={tag.name}/>
+        <Input label="标签名" type='text' placeholder='标签名' value={tag.name}
+               onChange={(e) => {
+                 updateTag(tag.id,{name:e.target.value})
+               }}/>
       </InputWrapper>
       <Center>
         <Space/>
