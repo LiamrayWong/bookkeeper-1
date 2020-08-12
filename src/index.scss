@@ -108,9 +108,10 @@ textarea {
   font-size: 100%
 }
 
-button {
+button,input {
   border-radius: 0;
   font-family: inherit;
+  font-size: inherit;
 }
 
 :focus {

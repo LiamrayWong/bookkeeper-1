@@ -5,9 +5,11 @@ import {Layout} from 'components/Layout';
 import Icon from 'components/Icon';
 import {Button} from 'components/Button';
 import styled from 'styled-components';
+import {Input} from 'components/Input';
+import {Center} from 'components/Center';
+import {Space} from 'components/space';
 
-
-const TopBar = styled.header`
+const Topbar = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,6 +17,13 @@ const TopBar = styled.header`
   padding: 14px;
   background: white;
 `
+
+const InputWrapper = styled.section`
+  background: white;
+  padding: 0 16px;
+  margin-top: 12px;
+`
+
 type Params = {
   id: string
 }
@@ -25,19 +34,18 @@ const Tag: React.FC = () => {
   const tag = findTag(parseInt(id));
   return (
     <Layout>
-      <TopBar>
+      <Topbar>
         <Icon name="left"/>
         <span>编辑标签</span>
-        <Icon name=""/>
-      </TopBar>
-      <div>
-        <label>
-          <span>备注</span>
-          <input type="text" placeholder="标签"
-          />
-        </label>
-      </div>
-      <Button>删除标签</Button>
+        <Icon/>
+      </Topbar>
+      <InputWrapper>
+        <Input label="标签名"  type='text' placeholder='标签名' value={tag.name}/>
+      </InputWrapper>
+      <Center>
+        <Space/>
+        <Button>删除标签</Button>
+      </Center>
     </Layout>
   );
 };
