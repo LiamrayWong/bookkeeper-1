@@ -28,9 +28,9 @@ const NavWrapper = styled.nav`
             fill:#333333;
           }
           &.selected{
-            color: #595959;
+            color: red;
             .icon{
-              fill: #595959;
+              fill: red;
             }
           }
         }
@@ -44,7 +44,7 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
-          <NavLink to="/tags" activeClassName="selected">
+          <NavLink  to="/tags" activeClassName="selected">
             <Icon name='tag'/>
             标签页
           </NavLink>
