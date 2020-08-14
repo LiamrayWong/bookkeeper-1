@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect,useState} from 'react';
 import {createId} from 'lib/createId';
 import {useUpdate} from 'hooks/useUpdate';
 
@@ -19,7 +19,7 @@ const useTags = () => {
     }, []);
     useUpdate(() => {
       window.localStorage.setItem('tags', JSON.stringify(tags));
-    }, [tags]);
+    }, tags);
     const findTag = (id: number) => tags.filter(tag => tag.id === id)[0];
     const addTag = () => {
       const tagName = window.prompt('请输入新的标签');
