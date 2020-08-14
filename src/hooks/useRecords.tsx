@@ -7,7 +7,7 @@ type RecordItem = {
   note: string;
   category: '+' | '-';
   amount: number;
-  createdAt?: string; //ISO 8601
+  createdAt: string; //ISO 8601
 }
 
 type NewRecordItem = Omit<RecordItem, 'createdAt'>

@@ -3,8 +3,6 @@ import {createId} from 'lib/createId';
 import {useUpdate} from 'hooks/useUpdate';
 
 
-
-
 const useTags = () => {
     const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
     useEffect(() => {
@@ -17,7 +15,7 @@ const useTags = () => {
           {id: createId(), name: '行'}
         ];
       }
-      setTags(localTags)
+      setTags(localTags);
     }, []);
     useUpdate(() => {
       window.localStorage.setItem('tags', JSON.stringify(tags));
@@ -54,7 +52,11 @@ const useTags = () => {
       tagsClone.splice(index, 1);
       setTags(tagsClone);
     };
-    return {tags, setTags, addTag, findTag, updateTag, findTagIndex, deleteTag};
+    const getName = (id: number) => {
+      const tag = tags.filter(t => t.id === id)[0];
+      return tag ? tag.name : '';
+    };
+    return {tags, getName, setTags, addTag, findTag, updateTag, findTagIndex, deleteTag};
   }
 ;
 
