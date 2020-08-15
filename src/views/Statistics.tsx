@@ -57,16 +57,16 @@ function Statistics() {
       </CategoryWrapper>
 
       {
-        array.map(([date,records]) => <div>
+        array.map(([date,records]) => <div key={date}>
           <Header>
             {date}
           </Header>
           <div>
             {records.map(r => {
-              return <Item>
+              return <Item key={r.createdAt}>
                 <div className="tags oneLine">
                   {r.tagIds
-                    .map(tagId => <span>{getName(tagId)}</span>)
+                    .map(tagId => <span key={tagId}>{getName(tagId)}</span>)
                     .reduce((result,span,index,array)=>{
                       return result.concat(index<array.length-1?[span,'，']:[span])
                     },[] as ReactNode[])
